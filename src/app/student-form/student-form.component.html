@@ -1,0 +1,35 @@
+<div class="ui raised segment">
+    <h2 class="ui header">Student Form</h2>
+    <form [formGroup] = "studentForm"
+        (ngSubmit)="onSubmit(studentForm.value)"
+        class="ui form">
+      <div class="field">
+        <label for="studentId">Student ID</label>
+        <input type="text" 
+          id="studentId" 
+          placeholder="Student ID"
+          formControlName="studentId">
+      </div>
+      <div *ngIf="!studentForm.controls['studentId'].valid" class="ui error message">Student id is invalid</div>
+      <div *ngIf="studentForm.controls['studentId'].hasError('required')" class="ui error message">Student id is required</div>
+      <div *ngIf="!studentForm.valid" class="ui error message">Form is invalid</div>
+      <div *ngIf="studentForm.controls['studentId'].hasError('not21')" class="ui error message">
+        Student ID must begin with 21
+      </div>
+      <div class="field">
+        <label for="studentName">Student Name</label>
+        <input type="text" 
+          id="studentName" 
+          placeholder="Student Name"
+          formControlName="studentName">
+      </div>
+      <div class="field">
+        <label for="studentEmail">Student Email</label>
+        <input type="text" 
+          id="studentEmail" 
+          placeholder="Student Email"
+          formControlName="studentEmail">
+      </div>
+      <button type="submit" class="ui button">Submit</button>
+    </form>
+  </div>
